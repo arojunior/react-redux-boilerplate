@@ -52,22 +52,23 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
-  entry: [
-    require.resolve('./polyfills'),
-    paths.appIndexJs,
-    vendor: [
-        'react',
-        'react-dom',
-        'react-redux',
-        'react-router',
-        'axios',
-        'redux',
-        'redux-form',
-        'redux-promise',
-        'redux-actions',
-        'ramda'
-    ],
-  ],
+  entry: {
+   app : [
+       require.resolve('./polyfills'),
+       paths.appIndexJs
+   ],
+   vendor: [
+       'react',
+       'react-dom',
+       'react-redux',
+       'react-router',
+       'redux',
+       'redux-form',
+       'redux-promise',
+       'redux-actions',
+       'ramda'
+   ],
+},
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -248,7 +249,7 @@ module.exports = {
   }),
   new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: './build/static/js/vendor.js'
+      filename: 'static/js/vendor.js'
   })
   ],
   // Some libraries import Node modules but don't use them in the browser.
