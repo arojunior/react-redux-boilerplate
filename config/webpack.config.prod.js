@@ -8,7 +8,7 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
-
+var fs = require('fs');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -42,6 +42,10 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? { publicPath: Array(cssFilename.split('/').length).join('../') }
   : undefined;
 
+// Find dependencies in package.json
+const packageJson = JSON.parse(fs.readFileSync('package.json','utf8'));
+const vendorDependencies = Object.keys(packageJson.dependencies);
+
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -57,18 +61,7 @@ module.exports = {
        require.resolve('./polyfills'),
        paths.appIndexJs
    ],
-   vendor: [
-       'react',
-       'react-dom',
-       'react-redux',
-       'react-router',
-       'redux',
-       'redux-form',
-       'redux-promise',
-       'redux-actions',
-       'ramda',
-       'axios'
-   ],
+   vendor: vendorDependencies,
 },
   output: {
     // The build folder.
