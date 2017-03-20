@@ -2,7 +2,7 @@ import {combineReducers}          from 'redux'
 import {reducer as formReducer}   from 'redux-form'
 
 import {createStore, applyMiddleware, compose} from 'redux'
-import promiseMiddleware                        from 'redux-promise'
+import promiseMiddleware                       from 'redux-promise'
 
 const combineReducer = combineReducers({
     form : formReducer,

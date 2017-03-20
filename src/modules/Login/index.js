@@ -1,7 +1,6 @@
 import axios from 'axios'
 import R from 'ramda'
 import {createAction} from 'redux-actions'
-import {loggedIn} from './../Auth'
 
 const LOGIN_SENDING = 'modules/Login/SENDING'
 const LOGIN_SUCCESS = 'modules/Login/SUCCESS'
@@ -13,7 +12,7 @@ const loginSuccess = createAction(LOGIN_SUCCESS)
 
 const initialState = {
     text        : null,
-    sending    : false
+    sending     : false
 }
 
 export default (state = initialState, action) => {
@@ -47,11 +46,9 @@ export const sendFormLogin = (values, dispatch) => {
         const {type, payload} = res.data
 
         if (R.equals(type, LOGIN_SUCCESS)) {
-            dispatch(loginSuccess())
-            return dispatch(loggedIn(payload.token))
+            return dispatch(loginSuccess())
         }
-
-        return dispatch(res.data)
+        
     })
     .catch(err => {
         dispatch(loginError({msg : 'Error'}))

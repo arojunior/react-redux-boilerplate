@@ -66,7 +66,8 @@ module.exports = {
        'redux-form',
        'redux-promise',
        'redux-actions',
-       'ramda'
+       'ramda',
+       'axios'
    ],
 },
   output: {
