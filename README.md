@@ -7,8 +7,8 @@
 * React-redux
 * Redux
 * Redux-actions
-* Redux-promise
 * Redux-form
+* Fetch-middleware
 
 ### Default configuration
 
