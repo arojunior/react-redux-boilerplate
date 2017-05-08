@@ -1,9 +1,9 @@
-export default {
-    path : 'about',
+import React from 'react'
 
-    getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-            cb(null, require('./components/About').default)
-        })
-    }
-}
+const About = () => (
+    <div>
+        Now you are in <code>src/routes/About/index.js</code>
+    </div>
+)
+
+export default About

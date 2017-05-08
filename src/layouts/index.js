@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import Navigation from './../components/Navigation'
 
 import '../assets/App.css'
@@ -18,9 +18,5 @@ const Layout = ({ children }) => (
         </div>
     </div>
 )
-
-Layout.propTypes = {
-  children: PropTypes.node
-}
 
 export default Layout

@@ -8,9 +8,6 @@ const combineReducer = combineReducers({
     form : formReducer,
 })
 
-/*
-* Store
-*/
 export const store = createStore(combineReducer, {}, compose(
     applyMiddleware(fetchMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
