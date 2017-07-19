@@ -7,6 +7,7 @@ import './assets/index.css'
 
 import store from './modules'
 import routes from './routes'
+import registerServiceWorker from './registerServiceWorker'
 
 render(
   <Provider store={store}>
@@ -14,3 +15,5 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+registerServiceWorker()
